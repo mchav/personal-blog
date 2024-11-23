@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Michael Chavinda
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <body>
+        <div class="navbar" id="topnav">
+            <a href=@{HomeR} class="active">
+                <strong>Michael Chavinda
+            <a href="https://github.com/mchav">Github
+            <a href="#about">About
+            <a href="javascript:void(0);" class="icon" onclick="toggleResponsive()">
+                <i class="fa fa-bars">
+        <div class="new-post-section">
+            <h1> New Post
+            <label for="newPostTitle">Title
+            <input id="newPostTitle" placeholder="Post title..." value="#{blogEntryTitle entry}">
+            <button id="saveNewPost" onclick="writePost()">Save
+            <label for="showPreview" id="showPreviewLabel"> Preview
+            <input type="checkbox" id="showPreview" onclick="togglePreview(this)">
+            <div class="post-edit-and-preview">
+                <textarea class="new-post-section" onkeyup="updatePreview()" placeholder="What are you thinking?" id="newPostContents">
+                    #{blogEntryContents entry}
+                <div class="preview-post-section" id="previewPostContents">
+                    #{preEscapedToHtml (blogEntryContents entry)}

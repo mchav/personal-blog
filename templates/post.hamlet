@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Michael Chavinda
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <body>
+        <div class="navbar" id="topnav">
+            <a href=@{HomeR} class="active">
+                <strong>Michael Chavinda
+            <a href="https://github.com/mchav">Github
+            <a href="#about">About</a>
+            <a href="javascript:void(0);" class="icon" onclick="toggleResponsive()">
+                <i class="fa fa-bars">
+        <div class="post-section">
+            <div class="post-title">
+                <h1> #{blogEntryTitle entry}
+                <p class="post-date"> Written: #{show $ blogEntryPosted entry}
+            <p>#{preEscapedToHtml $ blogEntryContents entry}

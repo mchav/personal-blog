@@ -1,0 +1,39 @@
+function writePost() {
+    var title = document.getElementById("newPostTitle").value;
+    var contents = document.getElementById("newPostContents").value;
+    fetch("@{PostR}", {
+      method: "POST",
+      body: JSON.stringify({
+        blogEntryTitle: title,
+        blogEntryContents: contents,
+        blogEntryPosted: #{toJSON $ blogEntryPosted entry},
+        blogEntryStatus: #{toJSON $ blogEntryStatus entry}  
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "X-XSRF-TOKEN": #{fromMaybe "" token}
+      }
+    }).then((response) => {
+        console.log(response.url);
+        window.location.href=response.url;
+    });
+  }
+  
+  function updatePreview() {
+    var doc = document.getElementById("newPostContents");
+    document.getElementById("previewPostContents").innerHTML = doc.value;
+  }
+  
+  function togglePreview(checkBox) {
+    var contents = document.getElementById("newPostContents");
+    var preview = document.getElementById("previewPostContents");
+  
+    if (checkBox.checked) {
+      contents.style.display = "none";
+      preview.style.display = "block";
+    } else {
+      contents.style.display = "block";
+      preview.style.display = "none";
+    }
+  
+  }

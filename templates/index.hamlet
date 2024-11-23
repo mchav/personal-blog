@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Michael Chavinda
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <body>
+        <div class="navbar" id="topnav">
+            <a href=@{HomeR} class="active">
+                <strong>Michael Chavinda
+            <a href="https://github.com/mchav">Github
+            <a href="#about">About
+            <a href="javascript:void(0);" class="icon" onclick="toggleResponsive()">
+                <i class="fa fa-bars">
+
+        <div class="summary-section">
+            <div class="posts-summary-section">
+                <h2 class="posts-summary-section"> Posts
+                $forall Entity entryId entry <- entries
+                    <div class="post-summary">
+                        <div class="post-details">
+                            <h3>
+                                <a href=@{ReadPostR entryId}> #{blogEntryTitle entry}
+                            <p class="post-date"> Written: #{show $ blogEntryPosted entry}
+                        <div class="post-fragment">
+                            <p> #{preEscapedToHtml $ (take 200 $ blogEntryContents entry) ++ "..."}
+                        <hr class="solid">

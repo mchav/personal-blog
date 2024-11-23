@@ -1,2 +1,7 @@
 / HomeR GET
 /admin AdminR GET
+/auth AuthR Auth getAuth
+/post PostR POST
+!/post/new NewPostR GET
+/post/edit/#BlogEntryId EditPostR GET
+!/post/#BlogEntryId ReadPostR GET

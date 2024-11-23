@@ -5,13 +5,19 @@
 module Handler.Home where
 
 import qualified Data.Text as T
+import qualified Text.Julius as J
+import qualified Text.Lucius as H
 import Foundation
+import Model
+import Text.Blaze.Html
 import Yesod
 
-name :: T.Text
-name = "Michael"
 
 getHomeR :: HandlerFor Blog Html
-getHomeR = defaultLayout [whamlet|
-        Hello #{name}!
-    |]
+getHomeR = defaultLayout $ do
+    -- change
+    entries <- liftHandler $ runDB $ selectList [] [Desc BlogEntryPosted]
+    addStylesheetRemote iconsCss
+    toWidget $(H.luciusFile "./templates/style.lucius")
+    toWidget $(J.juliusFile "./templates/util.julius" )
+    $(whamletFile "./templates/index.hamlet")

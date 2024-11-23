@@ -6,12 +6,20 @@ module Handler.Admin where
 
 import qualified Data.Text as T
 import Foundation
+import Model
 import Yesod
-
-name :: T.Text
-name = "Michael"
+import Yesod.Auth
 
 getAdminR :: HandlerFor Blog Html
-getAdminR = defaultLayout [whamlet|
-        Hello, admin #{name}!
-    |]
+getAdminR = do
+    maid <- maybeAuthId
+    defaultLayout
+        [whamlet|
+            <p>Your current auth ID: #{show maid}
+            $maybe _ <- maid
+                <p>
+                    <a href=@{AuthR LogoutR}>Logout
+            $nothing
+                <p>
+                    <a href=@{AuthR LoginR}>Go to the login page
+        |]

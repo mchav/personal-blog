@@ -1,5 +1,11 @@
 # Revision history for blog
 
-## 0.1.0.0 -- YYYY-mm-dd
+## 0.1.0.0 -- 2024-11-22
 
-* First version. Released on an unsuspecting world.
+Initial setup including:
+
+* CRUD for posts
+* User management
+* Auth
+* Docker setup
+
